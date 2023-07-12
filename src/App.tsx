@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import axios from 'axios'
+import config from './config'
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
     setIsLoading(true)
     setIsDataFetched(false)
     try {
-      await axios.post('http://localhost:5000/search', { keyword })
+      await axios.post(`${config.backendUrl}/search`, { keyword })
       .then((res) => {
         console.log(res)
         setData(res.data)
