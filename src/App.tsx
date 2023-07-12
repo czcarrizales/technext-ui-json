@@ -5,11 +5,11 @@ import axios from 'axios'
 function App() {
 
   const [keyword, setKeyword] = useState('')
-  const [data, setData] = useState([])
+  const [data, setData] = useState<any>([])
   const [isLoading, setIsLoading] = useState(false)
   const [isDataFetched, setIsDataFetched] = useState(false)
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault()
     setIsLoading(true)
     setIsDataFetched(false)
@@ -57,7 +57,7 @@ function App() {
             <p>No data found for {keyword}</p>
             :
             <div className='data-container'>
-              {data && data.map((item) => {
+              {data && data.map((item: any) => {
                 return <div className='item-container'>
                 <p className='date'>{item.date}</p>
                 <p className='phase'>{item.phase}</p>
